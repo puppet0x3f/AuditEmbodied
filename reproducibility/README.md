@@ -21,7 +21,9 @@ The handover example runs from this checkout. CAD-based examples also need the m
 
 ## Recompute recorded results
 
-Place the matching reproduction bundle's `data/`, `models/` and `reference/` directories beside these scripts. Use Python 3.10–3.12 and install only the requirements below. Run from `reproducibility/`. Choose new output directories for each command.
+**[Download `AuditEmbodied-review.zip` from Hugging Face (1.90 GiB)](https://huggingface.co/datasets/Puppeter/AuditEmbodied/resolve/main/AuditEmbodied-review.zip)**
+
+Run the commands below from the extracted `AuditEmbodied-review/` directory. To recompute from a Git checkout, copy the archive’s `data/`, `models/`, and `reference/` directories into `reproducibility/` and run the commands there. Use Python 3.10–3.12 and choose new output directories for each command.
 
 ```bash
 python -m pip install -r requirements.txt

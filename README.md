@@ -77,7 +77,9 @@ Tests that require PyTorch, NVIDIA EGL, or historical run files skip when those 
 
 ## Reproduce results
 
-The smoke test and handover example generate new trajectories from this checkout. Table recomputation takes the matching recorded trajectories, model files, and reference tables under `reproducibility/data/`, `reproducibility/models/`, and `reproducibility/reference/`. The guide covers those inputs, the NumPy evaluators, and the simulator examples. [Reproduction guide](reproducibility/README.md)
+**[Download the reproduction bundle from Hugging Face (1.90 GiB ZIP)](https://huggingface.co/datasets/Puppeter/AuditEmbodied/resolve/main/AuditEmbodied-review.zip)**
+
+The archive includes the recorded trajectories, lightweight model weights, reference tables, and NumPy evaluators. For recomputation from a Git checkout, place the archive’s `data/`, `models/`, and `reference/` directories under `reproducibility/`. The smoke test and handover example generate new trajectories from the checkout. [Reproduction guide](reproducibility/README.md)
 
 | Path | Contents |
 | --- | --- |

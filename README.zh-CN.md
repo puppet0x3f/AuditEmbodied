@@ -77,7 +77,9 @@ MUJOCO_GL=osmesa PYOPENGL_PLATFORM=osmesa python -m pytest -q
 
 ## 结果复现
 
-烟测和交接示例可以从当前仓库生成新轨迹。复算论文表格需要对应的轨迹、模型文件和参考表格，分别放在 `reproducibility/data/`、`reproducibility/models/` 和 `reproducibility/reference/`。复现指南介绍输入文件、NumPy 复算入口和仿真示例。[复现指南](reproducibility/README.md)
+**[从 Hugging Face 下载复现包（1.90 GiB ZIP）](https://huggingface.co/datasets/Puppeter/AuditEmbodied/resolve/main/AuditEmbodied-review.zip)**
+
+复现包包含已有轨迹、轻量模型权重、参考表格和 NumPy 复算脚本。如需在 Git 仓库中复算，将压缩包里的 `data/`、`models/` 和 `reference/` 目录放到 `reproducibility/` 下。烟测和交接示例可以从当前仓库生成新轨迹。[复现指南](reproducibility/README.md)
 
 | 路径 | 内容 |
 | --- | --- |
