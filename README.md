@@ -6,7 +6,7 @@
 
 Kangjie Huang · Yucheng Xin · Xinchun Wang · Dong Liu · Yan Fan · Shuming Liu
 
-[arXiv](https://arxiv.org/abs/2611.22368) · [Paper PDF](https://arxiv.org/pdf/2611.22368) · [Quick start](#quick-start) · [Reproduce results](#reproduce-results) · [Citation](#citation)
+[arXiv](https://arxiv.org/abs/2611.22368) · [Paper PDF](https://arxiv.org/pdf/2611.22368) · [Reproduction data](https://huggingface.co/datasets/Puppeter/AuditEmbodied) · [Quick start](#quick-start) · [Reproduce results](#reproduce-results) · [Citation](#citation)
 
 AuditEmbodied evaluates recovery from bimanual manipulation faults in MuJoCo and robosuite. It varies **what the robot holds during a wait** and **how long it waits**, then compares frozen recovery methods from the same post-wait state within each condition. The trajectory audit measures task completion, protection along the path, and total recovery time, including retries and final verification.
 

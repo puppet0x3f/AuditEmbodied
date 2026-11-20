@@ -6,7 +6,7 @@
 
 Kangjie Huang · Yucheng Xin · Xinchun Wang · Dong Liu · Yan Fan · Shuming Liu
 
-[arXiv](https://arxiv.org/abs/2611.22368) · [论文 PDF](https://arxiv.org/pdf/2611.22368) · [快速开始](#快速开始) · [结果复现](#结果复现) · [引用](#引用)
+[arXiv](https://arxiv.org/abs/2611.22368) · [论文 PDF](https://arxiv.org/pdf/2611.22368) · [复现数据](https://huggingface.co/datasets/Puppeter/AuditEmbodied) · [快速开始](#快速开始) · [结果复现](#结果复现) · [引用](#引用)
 
 AuditEmbodied 在 MuJoCo 和 robosuite 中评估双臂操作发生物理故障后的恢复。框架独立改变**等待期间的保持参考**和**等待时长**，并在每个条件下，从相同的等待后物理状态执行两种冻结的恢复方法。独立轨迹审计分别统计任务完成、全过程保护和完整恢复耗时，计入重试和最终验证。
 
