@@ -1,0 +1,129 @@
+{
+  "written_before_development_and_formal": true,
+  "question": "Does the initial position-reference by waiting interaction extend to handover, and does a smooth reference change alter its response?",
+  "formal_seeds": [
+    73000,
+    73001,
+    73002,
+    73003,
+    73004,
+    73005,
+    73006,
+    73007,
+    73008,
+    73009,
+    73010,
+    73011,
+    73012,
+    73013,
+    73014,
+    73015,
+    73016,
+    73017,
+    73018,
+    73019
+  ],
+  "development_seeds": [
+    91
+  ],
+  "methods": [
+    "rule",
+    "R3"
+  ],
+  "hold_modes": [
+    "registered",
+    "measured_position",
+    "smooth_position"
+  ],
+  "wait_steps": [
+    1,
+    20
+  ],
+  "scenarios": [
+    "nominal",
+    "object_sham",
+    "object_rotation"
+  ],
+  "formal_episodes": 720,
+  "fault_episodes": 480,
+  "healthy_episodes": 240,
+  "physical_config": {
+    "fault_steps": 12,
+    "withdrawal_m": 0.04,
+    "coupled_offset_m": 0.05,
+    "coupled_mode": "opposed_offset",
+    "coupled_shared_shift_m": 0.12,
+    "r3_placement_steps": 40,
+    "r3_pickup_height_adjustment": 0.0,
+    "r3_receiver_height_offset": -0.025,
+    "r3_search_offsets": [
+      0.0,
+      -0.02,
+      0.02,
+      -0.04,
+      0.04,
+      -0.06,
+      0.06
+    ],
+    "r1_retarget_height_offset": 0.0,
+    "object_force_n": [
+      0.0,
+      -8.0,
+      0.0
+    ],
+    "object_torque_nm": [
+      -1.0,
+      0.0,
+      0.0
+    ],
+    "object_mild_torque_nm": [
+      -0.5,
+      0.0,
+      0.0
+    ],
+    "wrench_steps": 13,
+    "wrench_settle_steps": 4,
+    "wrench_profile": "half_sine",
+    "rule_gap_tolerance": 0.05
+  },
+  "initial_wait": "Intervene only on first decision wait. Initial fixed policy choice is unchanged. Later decisions use the preceding measured-pose minimum-one-step service protocol, identically across conditions.",
+  "holding": "registered retains the last physical fault command position target; measured_position captures actual robot position at hold entry; smooth_position linearly transitions from the former to the latter over0.25s using simulation elapsed time, then holds. All three retain the same measured wrist orientations captured at hold entry, preceding gripper signs and gains. No repeated nonzero OSC delta.",
+  "smooth_transition_seconds": 0.25,
+  "registered_target_capture": "Capture the actual target passed to the final fault step; for the wrench prefix it is the explicitly held withdrawal target. Do not substitute pre-fault registered grasp positions or infer targets from evaluator object truth.",
+  "pairing": "All12alternatives share the full initialization and fault state for each seed/scenario. Both recovery paths within each hold/wait also share exact initial post-wait physical states.",
+  "primary": "Raw terminalC;Y500uses native500Hz shared guards with unchanged100ms registered-support and10mm penetration thresholds, plus unchanged20Hz entry/role/interface/terminal checks. ReportY20alongside, not a native claim for every predicate.",
+  "statistics": {
+    "resamples": 2000,
+    "seed": 20261116,
+    "unit": "whole initialization seed retaining both faults, methods, holds and waits",
+    "primary_contrasts": [
+      "measured-position versus registered holding-by-wait within each recovery path",
+      "difference of those interactions between paths",
+      "complete all-attempt time analogues"
+    ],
+    "secondary": [
+      "smooth-position holding-by-wait",
+      "long-wait gain/loss",
+      "retry and stage diagnostics",
+      "reference error, control effort and contacts"
+    ]
+  },
+  "cost": "Charge actual decision service rounded up to50ms, first-window minimum1/20steps, every later service, control-period excess, retry, release and verification. Subsequent waits use measured poses and original gains.",
+  "freeze": "Exact earlier recovery_skills.py and continuous.py, all skills/gains/force limits/thresholds unchanged. New wrapper changes only first-hold reference/window and passive recording. Boundary-correct observer annotation retains completed final packets as in the existing offline audit. No formal-test tuning.",
+  "development": "One separate seed checks runner semantics, valid physical prefixes, all nominal capabilities, pairing and passive recording. Corrections only for implementation failures; no selection of a more favorable physical working point.",
+  "stopping": "Run720once after development/freeze. Retain every outcome including zeros. Synchronize main/supplement and numerical/physical examples and stop. No third task, model training, geometry/gain/threshold scans or placement distance-duration expansion.",
+  "implementation_clarification_before_development": "Keep the earlier handover measured-wrist holding reference common across all three position conditions. This preserves its existing wrist primitive and makes position the only changed component.",
+  "passive_recording_timing": "Before formal execution, exclude the separately measured native evaluation overhead from controller/service clocks. Charge all other original measured blocking time and controller-period overruns. Initial36development runs and their overhead-induced waits are retained as development-initial, not formal results.",
+  "development_gate": {
+    "final_executions": 36,
+    "healthy_controls": 12,
+    "healthy_protected": 12,
+    "matched_scene_groups": 3,
+    "exact_postwait_path_pairs": 18,
+    "smooth_registered_short_pairs": 6,
+    "native_endpoints_checked": true,
+    "control_overruns": 0,
+    "tuning": false
+  },
+  "execution_workers": 12
+}

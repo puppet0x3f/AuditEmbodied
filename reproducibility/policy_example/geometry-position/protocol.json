@@ -1,0 +1,94 @@
+{
+  "created_utc": "2026-11-13T15:48:57.123889+00:00",
+  "question": "How does position-only holding change delay sensitivity in the existing mass-matched shallow-container geometry?",
+  "authorization": "User requested existing-log mechanism analysis, then exactly 240 paired geometry executions and manuscript synchronization.",
+  "preceding_mechanism_report": "../mechanism-analysis/report.json",
+  "development_seeds": [
+    70
+  ],
+  "formal_seeds": [
+    69000,
+    69001,
+    69002,
+    69003,
+    69004,
+    69005,
+    69006,
+    69007,
+    69008,
+    69009,
+    69010,
+    69011,
+    69012,
+    69013,
+    69014,
+    69015,
+    69016,
+    69017,
+    69018,
+    69019
+  ],
+  "methods": [
+    "retarget",
+    "closed_loop"
+  ],
+  "new_hold_modes": [
+    "measured_position"
+  ],
+  "wait_steps": [
+    1,
+    20
+  ],
+  "scenarios": [
+    "left_loss",
+    "right_loss",
+    "sham"
+  ],
+  "new_formal_episodes": 240,
+  "reused_registered_episodes": 240,
+  "baseline": "../../wait-hold-geometry-20261111/geometry-trials.jsonl",
+  "seeds": "Exact extension of the original geometry cohort; no additional independent seeds. Previously observed outcomes are retained.",
+  "control": "Only the initial inference_wait EEF position reference is changed to entry-measured position. Wrist references, grippers, original CAD/Target executors, geometry, mass, gains, faults and all scoring thresholds are unchanged.",
+  "physical_timing": "Every original measured visual service is rounded upward to 50 ms and physically executed. No fixed-slot or asynchronous-policy experiment is added.",
+  "primary": "For each executor: (position_long - registered_long) - (position_short - registered_short) on native_Y. All-fault complete time uses the same contrast.",
+  "report": [
+    "raw C",
+    "original Y20",
+    "native Y500",
+    "healthy controls",
+    "all-attempt complete time",
+    "pickup retries",
+    "terminal balance failures",
+    "exact prefix pairing"
+  ],
+  "statistics": "10000 whole-initialization-seed bootstrap resamples with seed 20261113; preserve both fault sides and every paired condition.",
+  "scope": "CAD/Target geometric boundary test, not CAD/Landmark ranking transfer. Geometry and core cohorts differ in seeds.",
+  "stopping": "Run the fixed 240 new formal cells once; retain every outcome. No outcome-based tuning, seed replacement, additional formal cells or model training.",
+  "runtime": {
+    "host": "local original environment",
+    "python": "/home/lc/.conda/envs/auditembodied/bin/python",
+    "MUJOCO_GL": "osmesa",
+    "PYOPENGL_PLATFORM": "osmesa",
+    "workers": 16,
+    "LD_PRELOAD": "/lib/x86_64-linux-gnu/libffi.so.7",
+    "LD_LIBRARY_PATH": "/home/lc/.conda/envs/auditembodied/lib",
+    "GL_VERSION": "3.1 Mesa 21.2.6"
+  },
+  "development_result": {
+    "executions": 12,
+    "C": 12,
+    "healthy_C": 4,
+    "healthy_n": 4,
+    "holding_command_checks": 126
+  },
+  "prefix_reproduction": {
+    "initialization_state": true,
+    "preclose_state": true,
+    "initialization_end_state": true,
+    "prefix_state": true,
+    "post_wait_state": true,
+    "first_visual_input_exact": true,
+    "first_rgb_hashes_exact": true,
+    "first_estimate_exact": true
+  }
+}

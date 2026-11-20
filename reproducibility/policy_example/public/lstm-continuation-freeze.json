@@ -1,0 +1,10 @@
+{
+  "frozen_utc": "2026-11-11T18:24:20.776669+00:00",
+  "source_sha256": {
+    "resume_lstm.py": "1c04ab3097c39fcaed15fdc2c41cb57dd98efc0a65a21a711d67c27d4fd35479"
+  },
+  "original_source_freeze": "formal-freeze.json",
+  "preserved_complete_executions": 120,
+  "remaining_planned_executions": 60,
+  "change": "Continue only missing predeclared conditions from unchanged original unpaused baselines after external SIGTERM (shell exit143). No policy, threshold or controller change; complete prefix, image history and recurrent/RNG matching remain exact."
+}

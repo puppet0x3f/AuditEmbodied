@@ -1,0 +1,10 @@
+{
+  "frozen_utc": "2026-11-11T17:34:24.939609+00:00",
+  "source_sha256": {
+    "resume_diffusion.py": "b987d4299b93e693d9b11ffd6c50bc1f8db4f0d2817d2004cc9247d601217106"
+  },
+  "original_source_freeze": "formal-freeze.json",
+  "original_unpaused_results_reused": 20,
+  "new_complete_holding_trials": 160,
+  "change": "Treat repeated unused diffusion predictions as numerical diagnostics. Execute the original policy actual roll-in and committed queue, checking physical states, RGB histories and RNG states exactly before the intervention. Frozen checkpoint and actual control law are unchanged."
+}

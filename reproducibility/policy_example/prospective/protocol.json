@@ -1,0 +1,85 @@
+{
+  "stage": "written before new development or formal execution",
+  "question": "Does waiting-dependent recovery value persist across delay dose and a measured-pose holding policy, then a different geometry?",
+  "development_seeds": [
+    70,
+    71
+  ],
+  "wait_seeds": [
+    68000,
+    68001,
+    68002,
+    68003,
+    68004,
+    68005,
+    68006,
+    68007,
+    68008,
+    68009,
+    68010,
+    68011,
+    68012,
+    68013,
+    68014,
+    68015,
+    68016,
+    68017,
+    68018,
+    68019
+  ],
+  "geometry_seeds": [
+    69000,
+    69001,
+    69002,
+    69003,
+    69004,
+    69005,
+    69006,
+    69007,
+    69008,
+    69009,
+    69010,
+    69011,
+    69012,
+    69013,
+    69014,
+    69015,
+    69016,
+    69017,
+    69018,
+    69019
+  ],
+  "methods": [
+    "retarget",
+    "closed_loop"
+  ],
+  "hold_modes": [
+    "registered",
+    "measured_pose"
+  ],
+  "wait_steps": [
+    1,
+    5,
+    10,
+    20
+  ],
+  "faults": [
+    "left_loss",
+    "right_loss"
+  ],
+  "healthy": "sham at 1 and 20 steps for both methods and holds",
+  "expected_wait_episodes": 800,
+  "geometry": "preselected shallow rectangular container: half-size [.09,.055,.04], handle length .075, width .10, radius .01; match total mass to 1.818kg by density before compilation",
+  "geometry_design": "after waiting experiment: 20 fresh seeds, both methods, registered holding, 1/20-step windows, two faults and sham: 240 episodes",
+  "geometry_adaptation": "Only declared CAD dimensions, handle height and table-plane offset change. Robot gains, thresholds, fault amplitudes, durations and recovery logic stay fixed.",
+  "freeze": "Development checks basic execution and health only. Freeze before each formal cohort; no formal-test tuning or exclusions.",
+  "primary": "Native 500Hz shared support/penetration guard, original terminal/interface checks retained at20Hz. Also report unchanged20Hz view.",
+  "statistics": {
+    "unit": "whole initialization seed",
+    "draws": 2000,
+    "seed": 20261113
+  },
+  "mechanism": "Wait-end tilt/center/relative motion; setdown and close endpoint geometry; first no-dual-grasp stage, pickup retries; complete all-attempt time. State measurements reach analysis only.",
+  "observations": "Four320RGB known-CAD fits and robot kinematics/encoders only; no state editing or contact truth in control. Every actual visual service incurs physical holding.",
+  "stopping": "Complete these two cohorts and report observed effects and nulls. No new learning, extra tasks, or repeated tuning to force an interaction."
+}

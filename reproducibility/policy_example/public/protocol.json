@@ -1,0 +1,55 @@
+{
+  "written_before_any_formal_holding_test": "2026-11-11T16:52:44.172025+00:00",
+  "formal_seeds": [
+    92000,
+    92001,
+    92002,
+    92003,
+    92004,
+    92005,
+    92006,
+    92007,
+    92008,
+    92009,
+    92010,
+    92011,
+    92012,
+    92013,
+    92014,
+    92015,
+    92016,
+    92017,
+    92018,
+    92019
+  ],
+  "control_development_seeds": [
+    91005
+  ],
+  "policy_query_seed": 20261119,
+  "policies": [
+    "lstm_gmm",
+    "diffusion_policy_cnn"
+  ],
+  "per_policy_unique_formal": 180,
+  "unique_formal_total": 360,
+  "conditions": "20 native unpaused trajectories plus 20 seeds x 2 fixed boundaries x 2 position references x 2 wait lengths per policy. The unpaused trajectory is shared by the boundary comparisons, never counted twice.",
+  "boundaries": [
+    32,
+    272
+  ],
+  "boundary_basis": "Fixed native action boundaries selected from independent development: early object interaction and payload transport. Both are chunk boundaries for both policies. Actual contact/height at entry are recorded; they are scheduled windows, not an oracle-matched physical phase across policies.",
+  "pause": "After the policy query, before its first action: retain the already queried action chunk, old hidden state and observation history. Resume the frozen public policy afterward. No finetuning or altered diffusion schedule.",
+  "holding": "Override native OSC absolute position goal to the true last controller goal or measured entry position. Both wrists retain the true last orientation goal; both grippers retain their previous command. Zero pose inputs prevent accidental repeated delta commands. All actual controller goals are checked.",
+  "matching": "Fresh native reset, exact physical action roll-in from each checkpoint own unpaused trajectory, identical prefix physics and RGB history within policy. No claim of identical physical continuation states between different policies. No simulator state edits after reset.",
+  "completion": "Unchanged native Transport task: payload in target bin and trash in trash bin, using the original 700 policy-action horizon. No pot-specific path contract is imposed.",
+  "cost": "Report physical simulation time, all measured policy query and observation-acquisition services, their charged sum, and evaluation wall time. The native synchronous benchmark freezes physics during ordinary queries; only the imposed wait adds physical steps. This is not validation of a general asynchronous deployment system.",
+  "statistics": {
+    "draws": 2000,
+    "seed": 20261120,
+    "unit": "whole initialization seed retaining both phases, holds, waits and policy comparisons",
+    "primary": "holding-by-wait completion interaction separately within each policy and boundary; full seed denominators; no success-conditioned selection"
+  },
+  "stopping": "Finish this 360-execution cohort once both public policies pass the capability gate; synchronize paper and reproduction; no alternate checkpoints, extra phases or parameter scans chosen from holding outcomes.",
+  "initialization_warmup": "A common native zero-pose preparation step and a dummy policy forward materialize controller/solver/render/RNN caches before every condition starts from a fresh seeded reset. They are task initialization, not post-boundary state edits or tuned recovery.",
+  "initialization_controller_state": "Clear the native Panda gripper command accumulator to its fresh-model default at each episode initialization. The native reset restores finger coordinates but otherwise leaves this accumulator from the previous episode; retaining it breaks exact physical roll-in pairing. This is initialization-only and does not alter policy weights, gains, or commands after task start."
+}

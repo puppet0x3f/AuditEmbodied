@@ -1,0 +1,62 @@
+{
+  "created_before_development": "2026-11-11T15:55:51.564590+00:00",
+  "question": "Does smooth position reanchoring preserve the lifting recovery benefit without an instantaneous reference jump?",
+  "formal_seeds": [
+    74000,
+    74001,
+    74002,
+    74003,
+    74004,
+    74005,
+    74006,
+    74007,
+    74008,
+    74009,
+    74010,
+    74011,
+    74012,
+    74013,
+    74014,
+    74015,
+    74016,
+    74017,
+    74018,
+    74019
+  ],
+  "development_seeds": [
+    92
+  ],
+  "methods": [
+    "closed_loop"
+  ],
+  "hold_modes": [
+    "registered",
+    "measured_position",
+    "smooth_position"
+  ],
+  "wait_steps": [
+    1,
+    20
+  ],
+  "scenarios": [
+    "left_loss",
+    "right_loss",
+    "sham"
+  ],
+  "formal_episodes": 360,
+  "smooth_transition_seconds": 0.25,
+  "reference": "Position goal interpolates linearly from the last registered goal to actual entry EEF position over .25 s of simulated waiting. The first control command at elapsed=0 retains the registered target. Both wrists retain the original registered orientation target in all conditions; grippers and gains are identical. No physical state editing.",
+  "freeze": "Exact prior CAD source/config; development checks numerical execution, interpolation endpoints and prefix matching only. No task/model/threshold tuning or favorable seed replacement.",
+  "primary": "Native Y500 at unchanged 100 ms support and 10 mm penetration guards; raw C, Y20, first dual grasp, full all-attempt time and retries reported.",
+  "statistics": {
+    "resamples": 2000,
+    "seed": 20261118,
+    "unit": "whole initialization seed retaining both fault sides and all hold/wait cells",
+    "contrasts": [
+      "smooth minus registered at long wait",
+      "smooth by wait minus registered by wait",
+      "smooth minus immediate position at long wait"
+    ]
+  },
+  "stopping": "Complete exactly 360 formal runs after development/freeze. No role-only or offset scans. Retain all attempts and disclose initialization/runtime failures."
+}

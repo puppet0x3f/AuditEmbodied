@@ -1,0 +1,77 @@
+{
+  "created_utc": "2026-11-12T00:39:08.481876+00:00",
+  "development_seeds": [
+    97,
+    98
+  ],
+  "formal_seeds": [
+    72000,
+    72001,
+    72002,
+    72003,
+    72004,
+    72005,
+    72006,
+    72007,
+    72008,
+    72009,
+    72010,
+    72011,
+    72012,
+    72013,
+    72014,
+    72015,
+    72016,
+    72017,
+    72018,
+    72019
+  ],
+  "methods": [
+    "robust_cad"
+  ],
+  "hold_modes": [
+    "registered",
+    "measured_position"
+  ],
+  "wait_steps": [
+    1,
+    20
+  ],
+  "scenarios": [
+    "left_loss",
+    "right_loss",
+    "sham"
+  ],
+  "formal_episodes": 240,
+  "budget_seconds": 45,
+  "maximum_queries": 8,
+  "maximum_pickup_attempts": 2,
+  "new_controller_parameters": {
+    "arrival_tolerance_m": 0.012,
+    "arrival_rotation_deg": 5,
+    "maximum_extra_tracking_steps": 40
+  },
+  "evaluation": "Original C, Y20, Y500 unchanged, plus common 45 s completion view for all original and robust methods. Original full-cost baselines retained.",
+  "primary": "Robust CAD hold-by-wait interaction on Y500 within 45 s; preserve capability and report healthy controls and all timeouts.",
+  "comparison": "Reuse the exact original shared-prefix CAD/Landmark cohort, no new baseline execution.",
+  "stopping": "Freeze once a capable development variant is obtained; run all 240 formal conditions, without outcome-based extension. No more than 400 new formal runs across both routes.",
+  "development_choice": "Initial visual table-leveling development variant reduced capability and was rejected before formal execution; retained in development-leveling. Final variant preserves all original placement, targets and wrists, adding bounded arrival-conditioned settling before closing.",
+  "nonpreemptive_service": "A query started before the deadline completes and is fully charged; an unavoidable overrun is retained and fails the common budget view.",
+  "development_result": {
+    "adaptive": {
+      "fault_C": 11,
+      "fault_attempts": 16,
+      "healthy_C": 8,
+      "healthy_attempts": 8,
+      "position_only_C": 8,
+      "position_only_attempts": 8
+    },
+    "original": {
+      "fault_C": 13,
+      "fault_attempts": 16,
+      "healthy_C": 8,
+      "healthy_attempts": 8
+    },
+    "interpretation": "Engineering ability check, not an equivalence test. No tuning on formal seeds or outcomes."
+  }
+}

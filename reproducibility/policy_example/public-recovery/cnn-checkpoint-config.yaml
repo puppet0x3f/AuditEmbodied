@@ -1,0 +1,379 @@
+name: train_diffusion_unet_hybrid
+_target_: diffusion_policy.workspace.train_diffusion_unet_hybrid_workspace.TrainDiffusionUnetHybridWorkspace
+task_name: transport_image
+shape_meta:
+  obs:
+    shouldercamera0_image:
+      shape:
+      - 3
+      - 84
+      - 84
+      type: rgb
+    robot0_eye_in_hand_image:
+      shape:
+      - 3
+      - 84
+      - 84
+      type: rgb
+    robot0_eef_pos:
+      shape:
+      - 3
+    robot0_eef_quat:
+      shape:
+      - 4
+    robot0_gripper_qpos:
+      shape:
+      - 2
+    shouldercamera1_image:
+      shape:
+      - 3
+      - 84
+      - 84
+      type: rgb
+    robot1_eye_in_hand_image:
+      shape:
+      - 3
+      - 84
+      - 84
+      type: rgb
+    robot1_eef_pos:
+      shape:
+      - 3
+    robot1_eef_quat:
+      shape:
+      - 4
+    robot1_gripper_qpos:
+      shape:
+      - 2
+  action:
+    shape:
+    - 20
+exp_name: default
+horizon: 16
+n_obs_steps: 2
+n_action_steps: 8
+n_latency_steps: 0
+dataset_obs_steps: 2
+past_action_visible: false
+keypoint_visible_rate: 1.0
+obs_as_global_cond: true
+policy:
+  _target_: diffusion_policy.policy.diffusion_unet_hybrid_image_policy.DiffusionUnetHybridImagePolicy
+  shape_meta:
+    obs:
+      shouldercamera0_image:
+        shape:
+        - 3
+        - 84
+        - 84
+        type: rgb
+      robot0_eye_in_hand_image:
+        shape:
+        - 3
+        - 84
+        - 84
+        type: rgb
+      robot0_eef_pos:
+        shape:
+        - 3
+      robot0_eef_quat:
+        shape:
+        - 4
+      robot0_gripper_qpos:
+        shape:
+        - 2
+      shouldercamera1_image:
+        shape:
+        - 3
+        - 84
+        - 84
+        type: rgb
+      robot1_eye_in_hand_image:
+        shape:
+        - 3
+        - 84
+        - 84
+        type: rgb
+      robot1_eef_pos:
+        shape:
+        - 3
+      robot1_eef_quat:
+        shape:
+        - 4
+      robot1_gripper_qpos:
+        shape:
+        - 2
+    action:
+      shape:
+      - 20
+  noise_scheduler:
+    _target_: diffusers.schedulers.scheduling_ddpm.DDPMScheduler
+    num_train_timesteps: 100
+    beta_start: 0.0001
+    beta_end: 0.02
+    beta_schedule: squaredcos_cap_v2
+    variance_type: fixed_small
+    clip_sample: true
+    prediction_type: epsilon
+  horizon: 16
+  n_action_steps: 8
+  n_obs_steps: 2
+  num_inference_steps: 100
+  obs_as_global_cond: true
+  crop_shape:
+  - 76
+  - 76
+  diffusion_step_embed_dim: 128
+  down_dims:
+  - 512
+  - 1024
+  - 2048
+  kernel_size: 5
+  n_groups: 8
+  cond_predict_scale: true
+  obs_encoder_group_norm: true
+  eval_fixed_crop: true
+ema:
+  _target_: diffusion_policy.model.diffusion.ema_model.EMAModel
+  update_after_step: 0
+  inv_gamma: 1.0
+  power: 0.75
+  min_value: 0.0
+  max_value: 0.9999
+dataloader:
+  batch_size: 64
+  num_workers: 8
+  shuffle: true
+  pin_memory: true
+  persistent_workers: false
+val_dataloader:
+  batch_size: 64
+  num_workers: 8
+  shuffle: false
+  pin_memory: true
+  persistent_workers: false
+optimizer:
+  _target_: torch.optim.AdamW
+  lr: 0.0001
+  betas:
+  - 0.95
+  - 0.999
+  eps: 1.0e-08
+  weight_decay: 1.0e-06
+training:
+  device: cuda:0
+  seed: 42
+  debug: false
+  resume: true
+  lr_scheduler: cosine
+  lr_warmup_steps: 500
+  num_epochs: 3000
+  gradient_accumulate_every: 1
+  use_ema: true
+  rollout_every: 50
+  checkpoint_every: 50
+  val_every: 1
+  sample_every: 5
+  max_train_steps: null
+  max_val_steps: null
+  tqdm_interval_sec: 1.0
+logging:
+  project: diffusion_policy_debug
+  resume: true
+  mode: online
+  name: 2023.01.06-18.26.26_train_diffusion_unet_hybrid_transport_image_train_0
+  tags:
+  - train_diffusion_unet_hybrid
+  - transport_image
+  - default
+  id: 1lus2keo_train_0
+  group: 1lus2keo
+checkpoint:
+  topk:
+    monitor_key: test_mean_score
+    mode: max
+    k: 5
+    format_str: epoch={epoch:04d}-test_mean_score={test_mean_score:.3f}.ckpt
+  save_last_ckpt: true
+  save_last_snapshot: false
+multi_run:
+  run_dir: data/outputs/2023.01.06/18.27.27_train_diffusion_unet_hybrid_transport_image
+  wandb_name_base: 2023.01.06-18.27.27_train_diffusion_unet_hybrid_transport_image
+task:
+  name: transport_image
+  shape_meta:
+    obs:
+      shouldercamera0_image:
+        shape:
+        - 3
+        - 84
+        - 84
+        type: rgb
+      robot0_eye_in_hand_image:
+        shape:
+        - 3
+        - 84
+        - 84
+        type: rgb
+      robot0_eef_pos:
+        shape:
+        - 3
+      robot0_eef_quat:
+        shape:
+        - 4
+      robot0_gripper_qpos:
+        shape:
+        - 2
+      shouldercamera1_image:
+        shape:
+        - 3
+        - 84
+        - 84
+        type: rgb
+      robot1_eye_in_hand_image:
+        shape:
+        - 3
+        - 84
+        - 84
+        type: rgb
+      robot1_eef_pos:
+        shape:
+        - 3
+      robot1_eef_quat:
+        shape:
+        - 4
+      robot1_gripper_qpos:
+        shape:
+        - 2
+    action:
+      shape:
+      - 20
+  task_name: transport
+  dataset_type: ph
+  dataset_path: data/robomimic/datasets/transport/ph/image_abs.hdf5
+  abs_action: true
+  env_runner:
+    _target_: diffusion_policy.env_runner.robomimic_image_runner.RobomimicImageRunner
+    dataset_path: data/robomimic/datasets/transport/ph/image_abs.hdf5
+    shape_meta:
+      obs:
+        shouldercamera0_image:
+          shape:
+          - 3
+          - 84
+          - 84
+          type: rgb
+        robot0_eye_in_hand_image:
+          shape:
+          - 3
+          - 84
+          - 84
+          type: rgb
+        robot0_eef_pos:
+          shape:
+          - 3
+        robot0_eef_quat:
+          shape:
+          - 4
+        robot0_gripper_qpos:
+          shape:
+          - 2
+        shouldercamera1_image:
+          shape:
+          - 3
+          - 84
+          - 84
+          type: rgb
+        robot1_eye_in_hand_image:
+          shape:
+          - 3
+          - 84
+          - 84
+          type: rgb
+        robot1_eef_pos:
+          shape:
+          - 3
+        robot1_eef_quat:
+          shape:
+          - 4
+        robot1_gripper_qpos:
+          shape:
+          - 2
+      action:
+        shape:
+        - 20
+    n_train: 6
+    n_train_vis: 2
+    train_start_idx: 0
+    n_test: 50
+    n_test_vis: 4
+    test_start_seed: 4300000
+    max_steps: 700
+    n_obs_steps: 2
+    n_action_steps: 8
+    render_obs_key: shouldercamera0_image
+    fps: 10
+    crf: 22
+    past_action: false
+    abs_action: true
+    tqdm_interval_sec: 1.0
+    n_envs: 28
+  dataset:
+    _target_: diffusion_policy.dataset.robomimic_replay_image_dataset.RobomimicReplayImageDataset
+    shape_meta:
+      obs:
+        shouldercamera0_image:
+          shape:
+          - 3
+          - 84
+          - 84
+          type: rgb
+        robot0_eye_in_hand_image:
+          shape:
+          - 3
+          - 84
+          - 84
+          type: rgb
+        robot0_eef_pos:
+          shape:
+          - 3
+        robot0_eef_quat:
+          shape:
+          - 4
+        robot0_gripper_qpos:
+          shape:
+          - 2
+        shouldercamera1_image:
+          shape:
+          - 3
+          - 84
+          - 84
+          type: rgb
+        robot1_eye_in_hand_image:
+          shape:
+          - 3
+          - 84
+          - 84
+          type: rgb
+        robot1_eef_pos:
+          shape:
+          - 3
+        robot1_eef_quat:
+          shape:
+          - 4
+        robot1_gripper_qpos:
+          shape:
+          - 2
+      action:
+        shape:
+        - 20
+    dataset_path: data/robomimic/datasets/transport/ph/image_abs.hdf5
+    horizon: 16
+    pad_before: 1
+    pad_after: 7
+    n_obs_steps: 2
+    abs_action: true
+    rotation_rep: rotation_6d
+    use_cache: true
+    seed: 42
+    val_ratio: 0.02

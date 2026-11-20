@@ -1,0 +1,31 @@
+{
+  "stage": "written_after_development_before_any71000formal",
+  "method": "Landmark RGB visual servo: triangulate color centroids, minimum rotation aligning the two observed handle landmarks, transfer measured reference grasps; separate table leveling/recenter/lift executor.",
+  "independence": "No call to existing CAD fit or recovery executor. Same robot/OSC, known camera calibration, registered robot grasp references and task colors. Nominal RGB reference acquired before initialization/fault; no object/contact truth, seed or fault name enters the policy.",
+  "development": "Final48executions on90-93: native16/16healthy and24/32faults. Earlier centroid-body and visual-hull prototypes are retained; their basic capability failures motivate the handle-line representation. No formal outcome influenced these choices.",
+  "formal_seeds": [
+    71000,
+    71001,
+    71002,
+    71003,
+    71004,
+    71005,
+    71006,
+    71007,
+    71008,
+    71009,
+    71010,
+    71011,
+    71012,
+    71013,
+    71014,
+    71015,
+    71016,
+    71017,
+    71018,
+    71019
+  ],
+  "conditions": "registered/measured-pose initial hold x0.05/1.00s xleft/right fault or sham;240formal",
+  "cost": "All acquisition/feature extraction/triangulation/controller service charged as physical holds; initial reference/render warmup is pre-fault task preparation.",
+  "primary": "500Hz shared support/penetration guards plus unchanged20Hz terminal/interface;20Hz guard also retained; whole-seed paired intervals2000resamples seed20261114."
+}

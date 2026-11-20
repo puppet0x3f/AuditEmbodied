@@ -1,0 +1,29 @@
+{
+  "lift_height": 0.16,
+  "minimum_clearance": 0.1,
+  "maximum_tilt_deg": 15.0,
+  "maximum_handle_height_difference": 0.03,
+  "relative_speed_limit": 0.2,
+  "close_steps": 10,
+  "lift_steps": 50,
+  "hold_steps": 20,
+  "grasp_height_offset": -0.0036,
+  "initial_finger_gap": 0.011,
+  "fault_open_steps": 12,
+  "fault_withdraw_steps": 12,
+  "fault_withdrawal": 0.06,
+  "coupled_height_offset": 0.05,
+  "coupled_steps": 20,
+  "local_approach_steps": 16,
+  "local_close_steps": 22,
+  "table_lower_steps": 60,
+  "table_press_offset": 0.004,
+  "gripper_force_limit": 40.0,
+  "gripper_position_gain": 4000.0,
+  "local_search_angles_deg": [
+    12.0,
+    24.0,
+    36.0
+  ],
+  "local_relevel_steps": 40
+}

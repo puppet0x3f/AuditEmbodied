@@ -1,0 +1,103 @@
+{
+  "written_before_development": true,
+  "question": "Which holding target component changes recovery sensitivity, and does an independent visual-action recovery exhibit holding-dependent outcomes or complete cost?",
+  "mechanism": {
+    "development_seeds": [
+      80,
+      81
+    ],
+    "formal_seeds": [
+      70000,
+      70001,
+      70002,
+      70003,
+      70004,
+      70005,
+      70006,
+      70007,
+      70008,
+      70009,
+      70010,
+      70011,
+      70012,
+      70013,
+      70014,
+      70015,
+      70016,
+      70017,
+      70018,
+      70019
+    ],
+    "method": "closed_loop",
+    "hold_modes": [
+      "registered",
+      "measured_position",
+      "measured_rotation",
+      "measured_pose"
+    ],
+    "wait_steps": [
+      1,
+      20
+    ],
+    "scenarios": [
+      "left_loss",
+      "right_loss",
+      "sham"
+    ],
+    "episodes": 480,
+    "intervention": "Only the initial hold position and rotation references; same gripper signs, OSC gains, initial fault prefixes and frozen recovery."
+  },
+  "independent": {
+    "development_seeds": [
+      90,
+      91,
+      92,
+      93
+    ],
+    "formal_seeds": [
+      71000,
+      71001,
+      71002,
+      71003,
+      71004,
+      71005,
+      71006,
+      71007,
+      71008,
+      71009,
+      71010,
+      71011,
+      71012,
+      71013,
+      71014,
+      71015,
+      71016,
+      71017,
+      71018,
+      71019
+    ],
+    "hold_modes": [
+      "registered",
+      "measured_pose"
+    ],
+    "wait_steps": [
+      1,
+      20
+    ],
+    "scenarios": [
+      "left_loss",
+      "right_loss",
+      "sham"
+    ],
+    "episodes": 240,
+    "choice": "A visual-action executor with a different perception/control path, without the existing CAD silhouette optimizer or recovery executor. Establish basic capability on development before freezing; no formal tuning or changing policy after the formal cohort."
+  },
+  "mass_kg": 1.818,
+  "audit": "Primary: original terminal/interface at20Hz plus500Hz shared support/penetration guards; original20Hz view retained.",
+  "statistics": {
+    "unit": "whole initialization seed, preserving sides and intervention pairings",
+    "resamples": 2000,
+    "seed": 20261114
+  },
+  "stopping": "Complete the two bounded studies; report their effects and nulls. No extra geometries, new large-model training or searches for a positive formal outcome."
+}

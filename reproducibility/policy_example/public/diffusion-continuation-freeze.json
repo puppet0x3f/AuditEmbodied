@@ -1,0 +1,11 @@
+{
+  "frozen_utc": "2026-11-11T17:51:18.618029+00:00",
+  "source_sha256": {
+    "resume_diffusion.py": "a9fb13a6f9e3b65e770760b40b94daed8cb0b1b41899e2d03c69942b0c54273c"
+  },
+  "original_source_freeze": "formal-freeze.json",
+  "original_unpaused_results_reused": 20,
+  "new_complete_holding_trials": 160,
+  "change": "Treat repeated unused diffusion predictions as numerical diagnostics. Execute the original policy actual roll-in and committed queue, checking physical states, RGB histories and RNG states exactly before the intervention. Frozen checkpoint and actual control law are unchanged.",
+  "dtype_correction": "Restore original float32 commands after JSON decoding. Native absolute-pose rotation conversion otherwise executes a float64 numerical path. Physical state, camera history and RNG remain exact requirements; no evaluation threshold or model weight is changed."
+}

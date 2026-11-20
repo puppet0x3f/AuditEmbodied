@@ -1,0 +1,34 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+/build/
+/dist/
+
+# Local research workspace
+/outputs/
+/paper/
+/paper_arxiv/
+/AuditEmbodied*.md
+/README.local.md
+
+# Reproduction inputs and generated results
+/reproducibility/README.bundle.md
+/reproducibility/data/
+/reproducibility/examples/
+/reproducibility/figures/
+/reproducibility/models/
+/reproducibility/reference/
+/reproducibility/policy_example/**/official-source/
+/reproducibility/policy_example/**/checkpoints/
+/reproducibility/policy_example/**/formal/
+/reproducibility/policy_example/**/development-analysis/
+/reproducibility/policy_example/**/development-completion.json
+/reproducibility/policy_example/**/gate.json
+/reproducibility/policy_example/**/prefix-interruptions-all.json
+/reproducibility/policy_example/**/timing-and-prefix-note.json
+/reproducibility/policy_example/**/warmup-port.json
+
+*.log
+MUJOCO_LOG.TXT

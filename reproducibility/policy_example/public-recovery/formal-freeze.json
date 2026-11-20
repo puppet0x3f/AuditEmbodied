@@ -1,0 +1,35 @@
+{
+  "frozen_utc": "2026-11-12T01:17:22.991904+00:00",
+  "planned_executions": 160,
+  "source_sha256": {
+    "campaign.py": "99d3d0ba85c501d58d0a3807707a21b79f43a94fb1ad361bbf0497582c0c5aef",
+    "recovery_transport.py": "f3e04d1f2437beceaa328465c0f1729d72d95de6c248df54d96f1c1ac26e0e29",
+    "analyze.py": "f706d35b7f22ac89cfb99809c05623361879140bb11efc3a943b790198e92dcf",
+    "vector_gate.py": "2f8bb42fbf021dfc74107be71fdf5c8aae89c7123cdcf2c4b3e7d3a8789d3c58",
+    "controlled_transport.py": "6b7637e46bf5c1020710ab73de42a0ffd38a4406c06a49e7b87cbc6dd19da0bd",
+    "baseline.py": "c65a35a6c5aa41b847726109a24efbc73b907377756b47d0e606a5e33b7fc1e5",
+    "protocol.json": "b5b411f5e6cb71d8383edb8cc970a4ee30258ae607f1c319ae9a443fd60f9a92",
+    "gate.json": "ea044c5111f7fc61ffe5b374b8a67068d2b3bcc08c58385b60028958938a0dfe",
+    "cnn-checkpoint-config.yaml": "eb4b2166cbe789f80a11a58626ab8f04c04faa2bc48bc8307c0e7be2bdeaa60c",
+    "native-env-meta.json": "00459bc2ab1c94ccac6a3f37360275ffdecc0dae2ca67275d4b7da78cd1156f2"
+  },
+  "checkpoints": {
+    "diffusion_policy_cnn": {
+      "method": "diffusion_policy_cnn",
+      "url": "https://diffusion-policy.cs.columbia.edu/data/experiments/image/transport_ph/diffusion_policy_cnn/train_0/checkpoints/epoch%3D2750-test_mean_score%3D1.000.ckpt",
+      "selection": "train_0 released checkpoint selected by its published native-task score before any local holding test",
+      "started_utc": "2026-11-11T15:56:25.789156+00:00",
+      "advertised_bytes": "5291781897",
+      "bytes": 5291781897,
+      "sha256": "494d97fcf1e4f6b325d2998b71a1261b38e9f85efaa7f1f471d5179b649e36b8",
+      "seconds": 655.1977884899825,
+      "status": "downloaded"
+    }
+  },
+  "maximum_total_new_formal": 400,
+  "prior_CAD_new_formal": 240,
+  "statistics": "10000 complete-seed bootstrap draws, random seed 20261122; R primary, C_native and all invalid event attempts retained.",
+  "official_policy_commit": "5ba07ac6661db573af695b419a7947ecb704690f",
+  "native_robosuite_commit": "277ab9588ad7a4f4b55cf75508b44aa67ec171f0",
+  "development_source_snapshot": "development-source/"
+}

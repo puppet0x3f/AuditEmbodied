@@ -1,0 +1,108 @@
+{
+  "written_before_development_and_new_formal": true,
+  "question": "Does the position-target by waiting interaction differ across two frozen visual executors on identical physical prefixes, and is it changed by the first placement control segment?",
+  "formal_seeds": [
+    72000,
+    72001,
+    72002,
+    72003,
+    72004,
+    72005,
+    72006,
+    72007,
+    72008,
+    72009,
+    72010,
+    72011,
+    72012,
+    72013,
+    72014,
+    72015,
+    72016,
+    72017,
+    72018,
+    72019
+  ],
+  "development_seeds": [
+    90
+  ],
+  "methods": [
+    "closed_loop",
+    "visual_servo"
+  ],
+  "hold_modes": [
+    "registered",
+    "measured_position",
+    "measured_rotation",
+    "measured_pose"
+  ],
+  "wait_steps": [
+    1,
+    20
+  ],
+  "scenarios": [
+    "left_loss",
+    "right_loss",
+    "sham"
+  ],
+  "formal_episodes": 960,
+  "freeze": "Reuse both exact final controller/observer sources from the previous study; no new controller tuning or checkpoint/threshold changes. Development checks the new shared runner, pairing and numerical execution only.",
+  "pairing": "Every method pair matches initialization, fault and post-hold snapshots exactly. All hold/wait alternatives share the same physical fault prefix. Method orders interleave and rotate.",
+  "cost": "Every actual RGB acquisition/fit and retry is charged as physical blocking. Reference RGB and renderer warmup are common pre-fault task preparation.",
+  "primary": "Y500 shared guards at500Hz, unchanged100ms registered-support and10mm penetration thresholds; C and interface remain20Hz. Report originalY20 alongside.",
+  "statistics": {
+    "resamples": 2000,
+    "seed": 20261115,
+    "unit": "whole initialization seed retaining sides, both executors and all hold/wait conditions",
+    "primary_contrasts": [
+      "position-by-wait averaged over wrist settings within each executor",
+      "executor difference of those position-by-wait effects",
+      "complete all-attempt time analogues"
+    ],
+    "secondary": [
+      "rotation-by-wait and position-only holding-by-wait",
+      "long-wait paired protection gain/loss tables",
+      "short-to-long protection transitions",
+      "stage and target-error diagnostics"
+    ]
+  },
+  "conditional_placement": {
+    "episodes": 240,
+    "seeds": [
+      72000,
+      72001,
+      72002,
+      72003,
+      72004,
+      72005,
+      72006,
+      72007,
+      72008,
+      72009,
+      72010,
+      72011,
+      72012,
+      72013,
+      72014,
+      72015,
+      72016,
+      72017,
+      72018,
+      72019
+    ],
+    "method": "fixed_touchdown",
+    "hold_modes": [
+      "registered",
+      "measured_position"
+    ],
+    "wait_steps": [
+      1,
+      20
+    ],
+    "trigger": "Original CAD feedback position-by-wait CI lower>0 AND CAD-minus-landmark position-by-wait CI lower>0 AND landmark position-by-wait CI lower<=0. This gates a heterogeneity diagnostic; a CI crossing zero does not establish no effect.",
+    "single_change": "In the CAD executor only, replace the two initial visually computed downward targets by two0.09m downward strokes at30steps each, retaining measured-wrist holding, both RGB observations/services,10step loaded holds, and all subsequent release, pickup, recenter and lift logic.",
+    "hypothesis": "If the original adaptive placement amplifies sensitivity, replacing only its touchdown target schedule should reduce position-by-wait protection/cost interaction. No formal-test retuning or additional variants."
+  },
+  "mechanism": "Use only evaluator-side recorded motion/contact and robot/visual ports. Compare registered/measured target offset, hold tracking, wait-end velocity/motion, observed visual-target to handle mismatch, placement, actual first-close geometry, registered grasps and retries. A target/handle mismatch is not a pure object-pose error.",
+  "stopping": "Complete the960cohort, run only the predeclared240diagnostic if triggered, synchronize paper/reproduction and stop. No new geometries, learned models, gain/contact scans or post-hoc searches for positive results."
+}
