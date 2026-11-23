@@ -79,7 +79,7 @@ Tests that require PyTorch, NVIDIA EGL, or historical run files skip when those 
 
 **[Download the reproduction bundle from Hugging Face (1.90 GiB ZIP)](https://huggingface.co/datasets/Puppeter/AuditEmbodied/resolve/main/AuditEmbodied-review.zip)**
 
-The archive includes the recorded trajectories, lightweight model weights, reference tables, and NumPy evaluators. For recomputation from a Git checkout, place the archive’s `data/`, `models/`, and `reference/` directories under `reproducibility/`. The smoke test and handover example generate new trajectories from the checkout. [Reproduction guide](reproducibility/README.md)
+The archive includes recorded trajectories, image inputs, lightweight model weights, reference tables, and NumPy evaluators. Recompute the results from the extracted `AuditEmbodied-review/` directory. To use the Git checkout, copy the archive’s `data/`, `figures/`, `models/`, and `reference/` directories into `reproducibility/`. The smoke test and handover example generate new trajectories from the checkout. [Reproduction guide](reproducibility/README.md)
 
 | Path | Contents |
 | --- | --- |

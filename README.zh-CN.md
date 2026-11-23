@@ -79,7 +79,7 @@ MUJOCO_GL=osmesa PYOPENGL_PLATFORM=osmesa python -m pytest -q
 
 **[从 Hugging Face 下载复现包（1.90 GiB ZIP）](https://huggingface.co/datasets/Puppeter/AuditEmbodied/resolve/main/AuditEmbodied-review.zip)**
 
-复现包包含已有轨迹、轻量模型权重、参考表格和 NumPy 复算脚本。如需在 Git 仓库中复算，将压缩包里的 `data/`、`models/` 和 `reference/` 目录放到 `reproducibility/` 下。烟测和交接示例可以从当前仓库生成新轨迹。[复现指南](reproducibility/README.md)
+复现包包含已有轨迹、图像输入、轻量模型权重、参考表格和 NumPy 复算脚本。解压后在 `AuditEmbodied-review/` 目录下按指南复算。如需在 Git 仓库中复算，将压缩包里的 `data/`、`figures/`、`models/` 和 `reference/` 目录放到 `reproducibility/` 下。烟测和交接示例可以从当前仓库生成新轨迹。[复现指南](reproducibility/README.md)
 
 | 路径 | 内容 |
 | --- | --- |
